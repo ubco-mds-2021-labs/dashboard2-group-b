@@ -1,4 +1,4 @@
-# {Short snappy Title of your project} (Group X)
+# Belgium's Energy Consumption Visualization in R (Group B)
 
 - Your title can change over time.
 - Here you should add the problem this dashboard hopes to solve
