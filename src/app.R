@@ -7,7 +7,7 @@ library(reshape2)
 library(plotly)
 library(patchwork)
 
-energy_data<-read.csv("energydata_complete.csv")
+energy_data<-read.csv('../data/energydata_complete.csv')
 
 sum(is.na(energy_data))
 #No NA values present in the data

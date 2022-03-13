@@ -1,10 +1,10 @@
-# Belgium's Energy Consumption Visualization (Group B)
+# Belgium's Energy Consumption Visualization in R (Group B)
 
 ### Deployed App Links
 
-Chad Wheeler: [https://py-prototype.herokuapp.com/](https://py-prototype.herokuapp.com/)
-Harpreet Kaur: [https://powerful-spire-82147.herokuapp.com/]
-Nelson Tang: [https://data551-milestone2.herokuapp.com/](https://data551-milestone2.herokuapp.com/)
+Chad Wheeler: 
+Harpreet Kaur: 
+Nelson Tang: 
 Nyanda Redwood:
 
 ## Who are we
