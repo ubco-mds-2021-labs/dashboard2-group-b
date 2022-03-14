@@ -6,10 +6,13 @@ library(dplyr)
 library(reshape2)
 library(plotly)
 library(patchwork)
+library(dash)
 
-energy_data<-read.csv('../data/energydata_complete.csv')
+## Wrangling Section
+
+energy_data <- read.csv('./data/energydata_complete.csv')
 drops <- c("rv1","rv2")
-energy_data<-energy_data[ , !(names(energy_data) %in% drops)]
+energy_data <- energy_data[ , !(names(energy_data) %in% drops)]
 
 sum(is.na(energy_data))
 #No NA values present in the data
@@ -21,3 +24,20 @@ colnames(energy_data) <- c("Date", "Appliances","Lights","Kitchen_temp","Kitchen
 energy_data$Date <- ymd_hms(energy_data$Date)
 
 energy_data$Month <- months(energy_data$Date)
+
+
+app = Dash$new(external_stylesheets = dbcThemes$BOOTSTRAP)
+
+
+## Plotting Section
+
+
+## Layout
+
+app$layout(dbcContainer())
+
+
+## Callbacks
+
+
+app$run_server(debug = T)
