@@ -12,15 +12,23 @@ Nyanda Redwood:
 - Chad: "An intelligent and witty person that works on the betterment of oneself and those around him." -Jacob
 - Harpreet: Passionate mathematician on the path of becoming a statistician.
 - Nelson: Definitely a data engineer on my right track in the near future.
-- Nyanda: Life long learner.
+- Nyanda:  Life long learner vested with a growth mentality.
 
 ## What are we doing and Why
 
-It is really important for the electricity grid operators to determine the amount of electricity fed into the electricity grid otherwise it might lead to a power blackout. The served purpose for this visualization would be to help the energy management system of Belgium to determine the adequate size of photovoltaic and energy storage to diminish the power flow into the grid during the various seasons of the year. Moreover, since the data is collected from a low-energy house it would help the management to address the challenge and decide upon a minimum threshold per household for load control if required in any unforeseen emergency situation. For instance, in case the management is willing to perform certain changes in the services or is willing to keep the power grid under maintenance then they would require a backup system that has the capacity to handle the least amount of energy load per household which is dependent on that power grid which is under maintenance. Our main focus would be to help the team to find out only the necessary amount of energy required by a Belgium resident. Our app will allow the user/the operator's supervising team to flexibly filter their search and view different aspects of the data by filtering and re-ordering on different variables.
+We built a dashboard to visualize data related to a low energy-house in Belgium. Our purpose is to provide analytical insights, visually, for ease of use in cases such as the determination of the adequate photovoltaic and energy storage size. Ideally, this could be of utmost importance to Belgium's energy management system. This is particularly true in the context of diminishing the inflow of power to the grid across the four seasons. This is premised on avoiding power balckouts. On the ground, this could be of immediate use to electricity grid operators in their calculations as they strategize how to avoid power blackouts.
+
+What is unique about our proposal is the use of a low-energy household to generate the data. This usage could be valuable in deciding upon a minimum threshold for energy consumption per household. This can be of further use in managing load control within unforseen emergency situations as well as in the creation of backup systems.
+
+Our app allows users, such as an operator's supervising team, to flexibly filter their search and view different aspects of the data by filtering and re-ordering on different variables.
 
 ## How can you get involved
 
-The dashboard offers an interactive layout where the user can select from the dropdown the room they would like to view a summarized analysis. The plot next to the selection would update the temperature v/s humidity plot for the selected room. Expanded plots would be displayed showing the other charts relating to the energy usage for the house. The dashboard would also provide you the flexibility to pick and choose the slected range of dates for which you had like to view the temperature and energy consumption differences. For instance, analyzing the variation for temperature and energy consumption for the winter season(selecting January month) to the spring time(selecting April month). The dashboard also serves the purpose of providing you with a summarized day of the week report as per your selection. This would help you to have an analysed energy management system planning for the Belegians separately for the weekdays and over the weekends as things vary over the week off in regards to the energy consumption when people prefer to stay inside their house and relax.
+If you are interested in analyzing the variation of temperature and energy consumption for parts of the winter season(January to February) or parts of the the spring season(March to April), this dashboard can be of help.
+
+With this dashboard, you recieve an interactive layout of various charts that represent several different types of information related to energy consumption. Using a dropdown menu, you can choose from a compilation of nine rooms and/or from a compilation of four months, separately.
+
+This dashboard provides you with concise reports based on day(s), week(s), and month(s). This supports analytical interests related to energy management systems within the context of a low-energy house in Belgium. For example, the vizualizations offer the granularity for comparitive insights based on weekend energy consumption versus weekday energy consumption.
 
 <img src ="docs/milestone_sketch.png" width="500px">
 
@@ -30,6 +38,15 @@ The dashboard offers an interactive layout where the user can select from the dr
 The data set was donated in the year 2017 by Luis Candanedo, University of Mons (UMONS). It was collected to create regression models of appliances energy use in a low energy building in Belgium. Our dataset includes approximately, 20000 temperature and humidity sensors measurements from a ZigBee wireless network, outside weather conditions (`To` and `RH_out`, `Wind speed`, `Visibility`, `Tdewpoint`) from a nearby airport station (Chievres Airport, Belgium), and recordings of the energy consumed by the lighting fixtures and other appliances operated by the people residing in that house. The recordings have been recorded at 10 min for about 4.5 months (i.e. from January 11, 2016 to May 27, 2016) in a low-energy building. The node transmitted the temperature recording (`T1` to `T9`) in Celsius and humidity (`RH_1` to `RH_9`) in % for every individual room in the house around every 3.3 minutes which were then averaged for 10 minutes periods. The energy data for both appliances (`Appliances`) and lights (`lights`) separately was logged every 10 minutes with m-bus energy meters in the Wh unit. 
 
 ## How to get started with this dashboard
+This dashboard offers dynamic date range selection, allowing you to input dates according to your interest. Date range selections can go from a single day to span an entire month or even several months. Each date range selection simultaneously updates all plots; there are five plots in total.
+
+For the total energy consumption of all appliance, you can view the bar chart within the dashboard. This displays Watts per hour for the house according to your date range selection. Adjancent to the bar chart is a pie chart, which demonstrates a proportional comparision of the filtered selection.
+
+For a month-wise comparison of energy consumption by appliance and light, you can view the area chart labeled "Energy Used in House".
+
+If you are interested in knowing about room temperature and humidity, there is a drop-down menu selection that allows you to do this. This selection updates the line chart labeled "Temperature and Humidity Trend".
+
+If you are interested in knowing the temperature and humidity outside the house, you can view the area chart labled " Outside Temperature vs Humidity", which displays the humdity in percentage and the temperature in Celsius.
 
 ## Acknowledgements and references 
 
