@@ -54,6 +54,13 @@ colnames(energy_data) <- c("Date",
                            "Dewpoint")
 
 
+# Wrangle date column
+energy_data$weekday  <- weekdays(energy_data$Date)
+
+# make Day_of_week an ordered factor
+energy_data$Day_of_week <- factor(energy_data$Day_of_week, levels=c("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday",
+                                "Friday", "Saturday"))
+
 energy_data$Date <- ymd_hms(energy_data$Date)
 
 energy_data$Month <- months(energy_data$Date)
@@ -87,6 +94,13 @@ roomlist_dropdown <-  dccDropdown(
 )
 
 ## Plotting Section
+
+#barplot Energy Consuption per Days of Week
+bar_plot <- ggplot(energy_data, aes(x=Appliances, y=Day_of_week, 
+    color=Day_of_week))+  
+    labs(title = 'More Energy Consumed on Mondays?', x='Energy Consumption of Appliances (Wh)', y='Days', color='Days')+ 
+    geom_col()+ theme_bw()
+bar_plot
 
 tempHum <- ggplot(energy_data) +
   aes(x= )
