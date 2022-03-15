@@ -39,9 +39,9 @@ colnames(energy_data) <- c("Date",
                            "Teenroom_hum",
                            "Parentsroom_temp",
                            "Parentsroom_hum",
-                           "Temp_out",
+                           "Outside_temp",
                            "Pressure",
-                           "Humidity_out",
+                           "Outside_hum",
                            "Windspeed",
                            "Visibility",
                            "Dewpoint")
@@ -72,7 +72,8 @@ room_dropdown <-  dccDropdown(
                  list(label = "NS", value = "NS"),
                  list(label = "Iron Room", value = "Ironroom"),
                  list(label = "Teen Room", value = "Teenroom"),
-                 list(label = "Parent's Room", value = "Parentsroom")
+                 list(label = "Parent's Room", value = "Parentsroom"),
+                 list(label = "Outside", value = "Outside")
   ),
   clearable=FALSE,
 )
