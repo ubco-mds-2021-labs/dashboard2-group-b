@@ -54,6 +54,34 @@ colnames(energy_data) <- c("Date",
                            "Dewpoint")
 
 
+# Wrangle date column
+energy_data$Date <- strptime(as.character(energy_data$Date),format="%Y-%m-%d %H:%M:%S") 
+energy_data$Date <- as.POSIXct(energy_data$Date,tz = "UTC") 
+energy_data$mhr <- floor_date(energy_data$Date,"hour")
+energy_data$Day_of_week <- weekdays(energy_data$Date)
+weekend_weekday <- function(x) {
+  val <- weekdays(x)
+  if (val == "Saturday" | val == "Sunday") {
+    val2 <- "Weekend"
+  } else {
+    val2 <- "Weekday"
+  }
+  return(val2)
+}
+energy_data$Day_of_week <- as.factor(energy_data$Day_of_week)
+energy_data$WeekStatus <- unlist(lapply(energy_data$Date, weekend_weekday))
+data_weekstatus <- select(energy_data, Date, WeekStatus, Appliances, mhr)
+data_weekstatus$Appliances <- data_weekstatus$Appliances/1000
+data_weekstatus_subset <- subset(data_weekstatus, Date > "2016-01-10" & Date < "2016-01-17")
+
+energy_data$Day_of_week <- as.factor(energy_data$Day_of_week)
+energy_data$WeekStatus <- unlist(lapply(energy_data$Date, weekend_weekday))
+
+
+# make Day_of_week an ordered factor
+energy_data$Day_of_week <- factor(energy_data$Day_of_week, levels=c("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday",
+                                "Friday", "Saturday"))
+
 energy_data$Date <- ymd_hms(energy_data$Date)
 
 energy_data$Month <- months(energy_data$Date)
@@ -87,6 +115,13 @@ roomlist_dropdown <-  dccDropdown(
 )
 
 ## Plotting Section
+
+#barplot Energy Consuption per Days of Week
+bar_plot <- ggplot(energy_data, aes(x=Appliances, y=Day_of_week, 
+    color=Day_of_week))+  
+    labs(title = 'More Energy Consumed on Mondays?', x='Energy Consumption of Appliances (Wh)', y='Days', color='Days')+ 
+    geom_col()+ theme_bw()
+bar_plot
 
 tempHum <- ggplot(energy_data) +
   aes(x= )
