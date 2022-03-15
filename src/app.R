@@ -10,7 +10,7 @@ library(dash)
 library(dashCoreComponents)
 library(dashHtmlComponents)
 
-energy_data <- read.csv("C:/Yashi/UBC MDS/DATA 551/RProject/data/energydata_complete.csv")
+energy_data <- read.csv("../data/energydata_complete.csv")
 drops <- c("rv1", "rv2")
 energy_data <- energy_data[, !(names(energy_data) %in% drops)]
 ## Wrangling Section
