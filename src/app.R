@@ -35,15 +35,10 @@ my_list <- c("Appliances", "Lights", "Month")
 energy_data_subset <- energy_data[my_list]
 
 energy_data_subset <- energy_data_subset %>%
-  group_by(Month) %>%
+  group_by(Month = fct_inorder(Month)) %>%
   summarise(across(c(Appliances, Lights), sum))
 
 energy_data_subset <- melt(energy_data_subset, id = c("Month"))
-
-
-energy_data$Date <- ymd_hms(energy_data$Date)
-
-energy_data$Month <- months(energy_data$Date)
 
 
 app <- dash_app()
@@ -69,7 +64,7 @@ roomlist_dropdown <-  dccDropdown(
 
 # area-plot
 area_plot <- ggplot(energy_data_subset, aes(x = Month, y = value, group = variable, fill = variable)) +
-  geom_area(alpha = 0.6) +
+  geom_area(alpha = 0.6) + geom_point(color = variable)
   labs(title = "Energy Used in House", y = "Energy use in Wh")
 
 app$layout(dccGraph(figure=ggplotly(area_plot)))
