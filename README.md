@@ -27,7 +27,7 @@ With this dashboard, you recieve an interactive layout of various charts that re
 
 This dashboard provides you with concise reports based on day(s), week(s), and month(s). This supports analytical interests related to energy management systems within the context of a low-energy house in Belgium. For example, the vizualizations offer the granularity for comparitive insights based on weekend energy consumption versus weekday energy consumption.
 
-<img src ="docs/milestone_sketch.png" width="500px">
+<img src ="docs/milestone3.gif" width="600px">
 
 
 ## Insight into data
