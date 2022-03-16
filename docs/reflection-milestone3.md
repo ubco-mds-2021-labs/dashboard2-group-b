@@ -1,1 +1,5 @@
-The team has implemented everything as planned. All the plots have been incorporated, the dashboard
+#Work Achieved
+The team has implemented everything as planned. Since the dashboard is implemented in R; there are certain elements of the presented layout which have been modified as required in order to add more grace to the dashboard. All the plots required by the team have been made. All the plots are interactive and functional as per the dropdowns and selection menu insertions in the dashboard. The message that we were willing to convey has been achieved by the team. The position of the elements have been perfectly performed and has been made function as we required from them. The positions of the plots have been modified to give a dashboard a better view. We have incorporated most of the useful information we have planned to present to our viewer.
+
+#Work not yet achieved
+Currently, the plots would interact using dropdown for the room selection and the date selection but later on we will change the interaction through the floor plan image as presented in our layout in the milestone1. There would be some changes in relation to the layout and the plot with regards to the principles of visualization. A piece that we have not yet worked on is the proper presentation/beautification of our dashboard.
