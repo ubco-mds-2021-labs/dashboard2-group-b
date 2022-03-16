@@ -9,7 +9,7 @@ library(patchwork)
 library(dash)
 
 
-energy_data<-read.csv('../data/energydata_complete.csv')
+energy_data<-read.csv('./data/energydata_complete.csv')
 
 drops <- c("rv1","rv2")
 energy_data<-energy_data[ , !(names(energy_data) %in% drops)]
@@ -161,7 +161,7 @@ markdown_text <-"# Energy Use of Appliance in a Low-Energy House"
 header <- div(
   dccMarkdown(markdown_text),
   style = list(
-    position = "fixed",
+    # position = "fixed",
     top = 0,
     left = 0,
     width = "100%",
@@ -185,7 +185,7 @@ setting_block <- dbcContainer(
     )
   ), fluid = TRUE , 
   style = list(
-    position = "fixed",
+    # position = "fixed",
     top = 110,
     left = 0,
     width = 300,
@@ -207,7 +207,7 @@ plots_block1 <- dbcContainer(
     ),
     #fluid = TRUE,
     style = list(
-      position = "fixed",
+      # position = "fixed",
       top = 110,
       left = 330,
       width = "80%",
@@ -231,7 +231,7 @@ plots_block2 <- dbcContainer(
   ),
   #fluid = TRUE,
   style = list(
-    position = "fixed",
+    # position = "fixed",
     top = 710,
     left = 330,
     width = "80%",
@@ -479,4 +479,4 @@ app %>% add_callback(
   }
 )
 
-app$run_server()
+app$run_server(host = "0:0:0:0")
