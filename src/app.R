@@ -161,7 +161,7 @@ markdown_text <-"# Energy Use of Appliance in a Low-Energy House"
 header <- div(
   dccMarkdown(markdown_text),
   style = list(
-    # position = "fixed",
+    position = "fixed",
     top = 0,
     left = 0,
     width = "100%",
@@ -170,7 +170,20 @@ header <- div(
   )
 )
 
+collaborators <-"
+  
+  Harpreet Kaur
+  
+  Chad Wheeler
+  
+  Nelson Tang
+  
+  Nyanda Redwood
 
+"
+data_reference <- "[Appliances energy prediction Data Set](http://archive.ics.uci.edu/ml/datasets/Appliances+energy+prediction)"
+
+github <- "[GitHub Link](https://github.com/ubco-mds-2021-labs/dashboard2-group-b)"
 
 # sidebar for controller
 setting_block <- dbcContainer(
@@ -182,14 +195,27 @@ setting_block <- dbcContainer(
     div(
       html$h2("Select Room: "),
       room_dropdown
+    ),
+    div(
+      html$h2("Collaborators: "),
+      dccMarkdown(collaborators)
+    ),
+    div(
+      html$h2("Data Source: "),
+      dccMarkdown(data_reference)
+    ),
+    div(
+      html$h2("Code Source: "),
+      dccMarkdown(github)
     )
-  ), fluid = TRUE , 
+  ), 
+  fluid = TRUE, 
   style = list(
-    # position = "fixed",
+    position = "fixed",
     top = 110,
     left = 0,
     width = 300,
-    height = "100%",
+    height = "80%",
     border = 'thin lightgrey solid',
     backgroundColor = 'rgb(250, 250, 250)',
     padding = '10px 10px 10px 10px'
@@ -205,11 +231,11 @@ plots_block1 <- dbcContainer(
         dbcCol(single_day_plot)
       )
     ),
-    #fluid = TRUE,
+    fluid = TRUE,
     style = list(
-      # position = "fixed",
+      position = "relative",
       top = 110,
-      left = 330,
+      left = 180,
       width = "80%",
       height = "40%",
       border = 'thin lightgrey solid',
@@ -229,11 +255,11 @@ plots_block2 <- dbcContainer(
       dbcCol(area_plot)
     )
   ),
-  #fluid = TRUE,
+  fluid = TRUE,
   style = list(
-    # position = "fixed",
-    top = 710,
-    left = 330,
+    position = "relative",
+    top = 150,
+    left = 180,
     width = "80%",
     height = "40%",
     border = 'thin lightgrey solid',
@@ -480,3 +506,4 @@ app %>% add_callback(
 )
 
 app$run_server(host = "0.0.0.0")
+
