@@ -1,5 +1,6 @@
-# Data 552 Milestone4 Dashboard Sub-plots
+# energy_consumption_plot.R
 
+# Data 552 Milestone4 Dashboard Sub-plots
 # This file contains 3 plots
 # Energy consumption of appliances for each month, room temperature for a selected date, room humidity for a selected date
 # The date change of the room temperature and humidity plots will be based on the hover data on the energy consumption plots
@@ -10,7 +11,6 @@
 library(ggplot2)
 library(dplyr)
 library(plotly)
-library(dash)
 library(hrbrthemes)
 
 # An interactive plot
