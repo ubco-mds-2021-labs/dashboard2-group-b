@@ -24,6 +24,13 @@ room_selector <- function(input1, input2, input3, input4, input5, input6, input7
 
 # Callback function for weekdays
 weekday <- function(start_date, end_date) {
+    #' Sum of Energy consumption for individual week day.
+    #'
+    #' @param hoverData A datetype object. Callback from date selector
+    #' @param value A datetype object. Callback from date selector
+    #' @return A plotly object.
+    #' @examples
+    #' weekday("2016-1-11", "2016-5-11")
   group_by_weekday <- energy_data %>%
     subset(energy_data$date_only >= start_date & energy_data$date_only <= end_date,
            select = c(weekday, Appliances)) %>%
@@ -45,7 +52,13 @@ weekday <- function(start_date, end_date) {
 
 # Callbacks for temp and hum in a date range plot
 date_range <- function(ycol, start_date, end_date) {
-  
+    #' Temperature and Humidity variations.
+    #' 
+    #' @param hoverData A datetype object. Callback from date selector
+    #' @param a list of datetype and the room type 
+    #' @return A plotly object.
+    #' @examples Room object
+    #' date_range("Kitchen","2016-1-11", "2016-5-11")
   
   temp = paste(ycol, "_temp", sep="")
   hum = paste(ycol, "_hum", sep="")
@@ -72,6 +85,14 @@ date_range <- function(ycol, start_date, end_date) {
 
 # Energy use plot within date range
 energy_use <- function(start_date, end_date) {
+    #' Appliances energy summary.
+    #' 
+    #' @param hoverData A datetype object. Callback from date selector
+    #' @param A list of datetype and the room type 
+    #' @return A plot 
+    #' @examples Room object
+    #' energy_use("2016-1-11", "2016-5-11")
+
   # sum energy use in each date
   group_by_date <- energy_data %>%
     subset(energy_data$date_only >= start_date & energy_data$date_only <= end_date,
@@ -109,6 +130,7 @@ energy_use <- function(start_date, end_date) {
 
 # Room humidity for a single day
 room_hum <- function(hoverData,value) {
+    
   hum = paste(value, "_hum", sep="")
   
   date <- hoverData$points[[1]]$customdata
