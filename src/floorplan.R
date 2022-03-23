@@ -20,7 +20,7 @@ app$layout(
   html$div(
     list(
       html$img(
-          src = "https://ars.els-cdn.com/content/image/1-s2.0-S0378778816308970-gr5_lrg.jpg",
+          src = ground_floor_url,
           height = 400,
           width = 439,
           useMap = "#ground-floor-map"
