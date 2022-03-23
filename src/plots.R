@@ -1,3 +1,5 @@
+library(dash)
+
 # energy consumption plot
 energy_point <- div(
     dccGraph(

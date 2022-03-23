@@ -1,3 +1,5 @@
+library(tidyverse)
+
 energy_data<-read.csv('./data/energydata_complete.csv')
 
 drops <- c("rv1","rv2")
