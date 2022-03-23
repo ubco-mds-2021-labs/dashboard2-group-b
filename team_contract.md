@@ -45,7 +45,7 @@ To accomplish this goal, below are five concrete ideas that we all agree to rega
 ## Conduct
 
 The code of conduct we have chosen is in the [Code of Conduct](./CODE_OF_CONDUCT.md) document.
-All team members agree to following the code of conduct, and below are five concrete escalation steps that we all agree to follow in the event that the code of conduct is violated by any member of the group (Step 1 is the first thing you will do, and Step 5 is the last thing you will do).
+All team members agree to follow the code of conduct, and below are five concrete escalation steps that we all agree to follow in the event that the code of conduct is violated by any member of the group (Step 1 is the first thing you will do, and Step 5 is the last thing you will do).
 
 1. Talk to the person
 2. Consult the group
@@ -58,8 +58,8 @@ All team members agree to following the code of conduct, and below are five conc
 
 ## Conflict Management
 
-Despite our best intentions, conflict may invariably arise within teammates.
-Discuss amongst your team some conflict mitigation strategies (feel free to search online if needed) and come up with 5 strategies all members of the team agree to follow in the event there is a conflict within the group.
+Despite our best intentions, conflict may invariably arise amongst teammates.
+Discuss within your team some conflict mitigation strategies (feel free to search online if needed) and come up with 5 strategies all members of the team agree to follow in the event there is a conflict within the group.
 You may also include things you will NOT do in the event a conflict arises.
 
 1. Be open to all perspectives
@@ -122,10 +122,10 @@ Brief notes/explanations (optional):
 
 | Category                  | Nyanda   |     Chad      | Nelson        | Harpreet |
 |---------------------------|----------|---------------|---------------|---------------|
-| Documentation/Reflection  |   50     |               |               |   50          |
-| Writing new code          |   20     |    30         |     30        |   20          |
-| Code Reviews/editing      |   20     |    30         |     30        |   20          |
-| Project Management        |   25     |    25         |     25        |   25          |
+| Documentation/Reflection  |   50%    |               |               |   50%         |
+| Writing new code          |   20%    |    30%        |     30%       |   20%         |
+| Code Reviews/editing      |   20%    |    30%        |     30%       |   20%         |
+| Project Management        |   25%    |    25%        |     25%       |   25%         |
 | Testing & Troubleshooting |          |               |               |               |
 
 Brief notes/explanations (optional):
@@ -134,11 +134,11 @@ Brief notes/explanations (optional):
 
 | Category                  | Nyanda   |      Chad     |  Nelson    |   Harpreet |
 |---------------------------|----------|---------------|------------|------------|
-| Documentation/Reflection  |  50      |               |            |  50        |
-| Writing new code          |  20      |   30          |   30       |  20        |
-| Code Reviews/editing      |  20      |   30          |   30       |  20        |
-| Project Management        |  25      |   25          |   25       |  25        |
-| Testing & Troubleshooting |          |               |            |            |
+| Documentation/Reflection  |  50%     |               |            |  50%       |
+| Writing new code          |  20%     |   30%         |   30%      |  20%       |
+| Code Reviews/editing      |  20%     |   30%         |   30%      |  20%       |
+| Project Management        |  25%     |   25%         |   25%      |  25%       |
+| Testing & Troubleshooting |  22.5%   |   27.5%       |   27.5%    |  22.5%     |
 
 Brief notes/explanations (optional):
 
@@ -147,8 +147,8 @@ Brief notes/explanations (optional):
 
 | Category                  | Nyanda   |      Chad     |  Nelson    |   Harpreet |
 |---------------------------|----------|---------------|------------|------------|
-| Documentation/Reflection  |  50      |               |            |  50        |
-| Writing new code          |  20      |   30          |   30       |  20        |
-| Code Reviews/editing      |  20      |   30          |   30       |  20        |
-| Project Management        |  25      |   25          |   25       |  25        |
-| Testing & Troubleshooting |          |               |            |            |
+| Documentation/Reflection  |  50%     |               |            |  50%       |
+| Writing new code          |  20%     |   30%         |   30%      |  20%       |
+| Code Reviews/editing      |  20%     |   30%         |   30%      |  20%       |
+| Project Management        |  25%     |   25%         |   25%      |  25%       |
+| Testing & Troubleshooting |  20%     |   30%         |   30%      |  20%       |
