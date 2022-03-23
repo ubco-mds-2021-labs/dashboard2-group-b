@@ -30,15 +30,19 @@ weekday <- function(start_date, end_date) {
     group_by(weekday) %>%
     summarise(sum_appliances = sum(Appliances))
   
+  # make Day_of_week an ordered factor
+  weekday <- factor(weekday, levels=c("Saturday", "Friday", "Thursday", "Wednesday", "Tuesday", "Monday", "Sunday" 
+  ))
+  
   bar_plot <- ggplot(group_by_weekday, 
                      aes(x=sum_appliances, y=weekday, color=weekday))+  
-    labs(title = 'More Energy Consumed on Mondays?', 
+    labs(title = 'Least Consumption on Tuesdays', 
          x='Energy Consumption of Appliances (Wh)', 
          y='Days', 
          color='Days') + 
-    geom_col()+ theme_bw() + theme(legend.title = element_text(size=10), 
-                                   legend.key.size = unit(0.5, 'cm'),
-                                   legend.text = element_text(size=8))
+    geom_col(show.legend = FALSE)+ theme_bw() #+ theme(legend.title = element_text(size=10), 
+                                   #legend.key.size = unit(0.5, 'cm'),
+                                   #legend.text = element_text(size=8))
   
   ggplotly(bar_plot)
 }
@@ -172,3 +176,4 @@ room_temp <- function(hoverData,value) {
     )
   )
 }
+
