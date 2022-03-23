@@ -1,4 +1,7 @@
 library(dash)
+source('src/controller.R')
+source('src/wrangling.R')
+
 
 # energy consumption plot
 energy_point <- div(
@@ -105,8 +108,8 @@ setting_block <- dbcContainer(
             date_range_picker
         ),
         div(
-            html$h2("Select Room: "),
-            room_dropdown
+            html$h2("Click a circle to select a room: "),
+            floorplan_selector
         ),
         div(
             html$h2("Collaborators: "),
@@ -126,11 +129,12 @@ setting_block <- dbcContainer(
         position = "fixed",
         top = 110,
         left = 0,
-        width = 300,
-        height = "80%",
+        width = 350,
+        # height = "80%",
         border = 'thin lightgrey solid',
         backgroundColor = 'rgb(250, 250, 250)',
-        padding = '10px 10px 10px 10px'
+        padding = '10px 10px 10px 10px',
+        overflow_y = 'scroll'
     )
 )
 
@@ -147,7 +151,7 @@ plots_block1 <- dbcContainer(
     style = list(
         position = "relative",
         top = 110,
-        left = 180,
+        left = 230,
         width = "80%",
         height = "40%",
         border = 'thin lightgrey solid',

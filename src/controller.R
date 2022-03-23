@@ -9,6 +9,25 @@
 library(dash)
 library(lubridate)
 
+
+room_dropdown <-  dccDropdown(
+  id = "room",
+  value = "Kitchen",
+  options = list(list(label = "Kitchen", value = "Kitchen"),
+                 list(label = "Living Room", value = "Living"),
+                 list(label = "Laundry Room", value = "Laundry"),
+                 list(label = "Office", value = "Office"),
+                 list(label = "Bathroom", value = "Bathroom"),
+                 list(label = "NS", value = "NS"),
+                 list(label = "Iron Room", value = "Ironroom"),
+                 list(label = "Teen Room", value = "Teenroom"),
+                 list(label = "Parent's Room", value = "Parentsroom"),
+                 list(label = "Outside", value = "Outside")
+  ),
+  clearable=FALSE
+)
+
+
 # date range picker
 date_range_picker <- dccDatePickerRange(
   id="my-date-picker-range",
