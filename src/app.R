@@ -11,16 +11,6 @@ library(dash)
 
 app <- Dash$new(external_stylesheets = dbcThemes$GRID)
 
-date_range_picker <- dccDatePickerRange(
-  id="my-date-picker-range",
-  min_date_allowed=date("2016-1-11"),
-  max_date_allowed=date("2016-5-27"),
-  initial_visible_month=date("2016-1-11"),
-  start_date=date("2016-1-11"),
-  end_date=date("2016-5-27")
-)
-
-
 # set layout
 app %>% set_layout(
   header,
