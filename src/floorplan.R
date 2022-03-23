@@ -9,55 +9,125 @@ library(patchwork)
 library(dash)
 
 
-app <- Dash$new(external_stylesheets = dbcThemes$GRID)
-
-
 ground_floor_url <- "https://ars.els-cdn.com/content/image/1-s2.0-S0378778816308970-gr5_lrg.jpg"
 upper_floor_url <- "https://ars.els-cdn.com/content/image/1-s2.0-S0378778816308970-gr6_lrg.jpg"
   
 
-app$layout(
-  html$div(
+floorplan_selector <- html$div(
+  html$img(
+    src = ground_floor_url,
+    height = 295,
+    width = 335,
+    useMap = "#ground-floor-map"
+  ),
+  html$map(
     list(
-      html$img(
-          src = ground_floor_url,
-          height = 400,
-          width = 439,
-          useMap = "#ground-floor-map"
+      html$area(
+        id='Kitchen',
+        shape='circle',
+        coords='173,206,20',
+        n_clicks=0,
+        href="#"
       ),
-      html$map(
-        list(
-          html$area(
-            id='room_4',
-            shape='circle',
-            coords='319,331,20',
-            n_clicks=0,
-            href="#"
-          ),
-          html$area(
-            id='room_1',
-            shape='circle',
-            coords='227,279,20',
-            n_clicks=0,
-            href="#"
-          )
+      html$area(
+        id='Living',
+        shape='circle',
+        coords='231,34,20',
+        n_clicks=0,
+        href="#"
+      ),
+      html$area(
+        id='Laundry',
+        shape='circle',
+        coords='104,117,20',
+        n_clicks=0,
+        href="#"
+      ),
+      html$area(
+        id='Office',
+        shape='circle',
+        coords='244,243,20',
+        n_clicks=0,
+        href="#"
+      )
+    ),
+    name = 'ground-floor-map'
+  ),
+  html$div(
+    html$img(
+      src = upper_floor_url,
+      height = 300,
+      width = 315,
+      useMap = "#upper-floor-map"
+    ),
+    html$map(
+      list(
+        html$area(
+          id='Bathroom',
+          shape='circle',
+          coords='115,202,20',
+          n_clicks=0,
+          href="#"
         ),
-        name = 'ground-floor-map'
+        html$area(
+          id='NS',
+          shape='circle',
+          coords='59,127,20',
+          n_clicks=0,
+          href="#"
+        ),
+        html$area(
+          id='Ironroom',
+          shape='circle',
+          coords='212,82,20',
+          n_clicks=0,
+          href="#"
+        ),
+        html$area(
+          id='Teenroom',
+          shape='circle',
+          coords='191,115,20',
+          n_clicks=0,
+          href="#"
+        ),
+        html$area(
+          id='Parentsroom',
+          shape='circle',
+          coords='146,61,20',
+          n_clicks=0,
+          href="#"
+        )
       ),
-      html$div(id="test")
+      name = 'upper-floor-map'
     )
   )
 )
 
-app$callback(
+
+floorplan_callback <- app$callback(
   output('test', 'children'),
   list(
-    input('room_1', 'n_clicks'),
-    input('room_4', 'n_clicks')
+    input('Kitchen', 'n_clicks'),
+    input('Living', 'n_clicks'),
+    input('Laundry', 'n_clicks'),
+    input('Office', 'n_clicks'),
+    input('Bathroom', 'n_clicks'),
+    input('NS', 'n_clicks'),
+    input('Ironroom', 'n_clicks'),
+    input('Teenroom', 'n_clicks'),
+    input('Parentsroom', 'n_clicks')
   ),
-  function(input1, input2) {
+  function(input1, input2, input3, input4, input5, input6, input7, input8, input9) {
     
-    inputs <- c(input1, input2)
+    inputs <- c(input1, 
+                input2,
+                input3,
+                input4, 
+                input5, 
+                input6, 
+                input7, 
+                input8, 
+                input9)
     
     ctx <- callback_context()
 
@@ -65,17 +135,8 @@ app$callback(
       
       unlist(strsplit(ctx$triggered$prop_id, "[.]"))[1]
       
-    } else "No room selected"
+    } else "Kitchen"
     
-    html$div(
-      html$table(
-        html$tr(
-          html$td(most_recent_click)
-        )
-      )
-    )
+    most_recent_click
   }
 )
-
-
-app$run_server(debug = T)
