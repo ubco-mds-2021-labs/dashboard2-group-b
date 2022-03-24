@@ -44,12 +44,9 @@ weekday <- function(start_date, end_date) {
   bar_plot <- ggplot(group_by_weekday, 
                      aes(x=sum_appliances, y=weekday, color=weekday))+  
     labs(title = 'Least Consumption on Tuesdays', 
-         x='Energy Consumption of Appliances (Wh)', 
-         y='Days', 
+         x='Energy Consumption of Appliances (Wh)',
          color='Days') + 
-    geom_col(show.legend = FALSE)+ theme_bw() #+ theme(legend.title = element_text(size=10), 
-                                   #legend.key.size = unit(0.5, 'cm'),
-                                   #legend.text = element_text(size=8))
+    geom_col(show.legend = FALSE)+ theme_bw() + theme(axis.title.y=element_blank())
   
   ggplotly(bar_plot)
 }
