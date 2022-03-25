@@ -19,5 +19,6 @@ install.packages('reshape2')
 install.packages('plotly')
 install.packages('patchwork')
 install.packages('dash')
+install.packages('dashHtmlComponents')
 
 remotes::install_github('plotly/dashR', upgrade=TRUE)
