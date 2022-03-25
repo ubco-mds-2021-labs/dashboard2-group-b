@@ -100,7 +100,7 @@ energy_consumption <- function(start_date, end_date) {
     }
     
     # add plot in list
-    plot_list[[counter]] <- ggplotly(p, height = 650)
+    plot_list[[counter]] <- ggplotly(p, height = 700)
     counter = counter + 1
   }
   

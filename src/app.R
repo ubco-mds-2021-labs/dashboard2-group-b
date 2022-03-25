@@ -1,5 +1,4 @@
 source('plots.R')
-source('controller.R')
 source('functions.R')
 source('energy_consumption_plot.R')
 source('wrangling.R')
@@ -60,9 +59,11 @@ app %>% add_callback(
   output('energy-scatter', 'figure'),
   list(
     input("my-date-picker-range", "start_date"),
-    input("my-date-picker-range", "end_date")
+    input("my-date-picker-range", "end_date"),
+    input('tabs-with-classes', 'value') # add there because there is a dash bug
+                                        # more info: https://community.plotly.com/t/graph-resizes-arbitrarily-when-changing-between-tabs-in-a-dash-app/40308
   ),
-  function(start_date, end_date) {
+  function(start_date, end_date,value) {
     energy_consumption(start_date, end_date)
   }
 )
@@ -71,9 +72,10 @@ app %>% add_callback(
   output('out-hum', 'figure'),
   list(
     input('energy-scatter', 'hoverData'),
-    input('room', 'data')
+    input('room', 'data'),
+    input('tabs-with-classes', 'value')
   ),
-  function(hoverData,data) {
+  function(hoverData,data,value) {
     selected_date_hum_plot(hoverData,data)
   }
 )
@@ -82,19 +84,13 @@ app %>% add_callback(
   output('out-temp', 'figure'),
   list(
     input('energy-scatter', 'hoverData'),
-    input('room', 'data')
+    input('room', 'data'),
+    input('tabs-with-classes', 'value')
   ),
-  function(hoverData,data) {
+  function(hoverData,data,value) {
     selected_date_temp_plot(hoverData,data)
   }
 )
-
-
-
-
-
-
-
 
 
 
