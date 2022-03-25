@@ -143,7 +143,6 @@ Brief notes/explanations (optional):
 Brief notes/explanations (optional):
 
 ### Milestone 4
-### Milestone 3
 
 | Category                  | Nyanda   |      Chad     |  Nelson    |   Harpreet |
 |---------------------------|----------|---------------|------------|------------|
