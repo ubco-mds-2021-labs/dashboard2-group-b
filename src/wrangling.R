@@ -5,8 +5,6 @@ energy_data<-read.csv('./data/energydata_complete.csv')
 drops <- c("rv1","rv2")
 energy_data<-energy_data[ , !(names(energy_data) %in% drops)]
 
-sum(is.na(energy_data))
-#No NA values present in the data
 
 #Change column names
 colnames(energy_data) <- c("Date", 

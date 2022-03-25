@@ -1,7 +1,12 @@
-source('plots.R')
-source('functions.R')
-source('energy_consumption_plot.R')
 source('wrangling.R')
+
+source('plots.R')
+source('tab3.R')
+source('energy_consumption_plot.R')
+source('functions.R')
+# don't change the source order
+
+
 
 app <- Dash$new(external_stylesheets = dbcThemes$GRID)
 
@@ -49,7 +54,8 @@ app %>% add_callback(
   output('tempHum', 'figure'),
   list(input('room', 'data'),
        input("my-date-picker-range", "start_date"),
-       input("my-date-picker-range", "end_date")),
+       input("my-date-picker-range", "end_date")
+       ),
   function(ycol, start_date, end_date) {
     date_range(ycol, start_date, end_date)
   }
@@ -92,6 +98,30 @@ app %>% add_callback(
   }
 )
 
+# Tab3 plot2
+app %>% add_callback(
+  output('energy-hum-area', 'figure'),
+  list(input('room', 'data'),
+       input("my-date-picker-range", "start_date"),
+       input("my-date-picker-range", "end_date")
+  ),
+  function(data, start_date, end_date) {
+    energy_humidity_function(data, start_date, end_date)
+  }
+)
+
+
+# Tab3 plot1 
+app %>% add_callback(
+  output('energy-temp-area', 'figure'),
+  list(input('room', 'data'),
+       input("my-date-picker-range", "start_date"),
+       input("my-date-picker-range", "end_date")
+       ),
+  function(data, start_date, end_date) {
+    energy_temp_function(data, start_date, end_date)
+  }
+)
 
 
 app$run_server()

@@ -1,7 +1,9 @@
+source("controller.R")
 library(dash)
 library(dashHtmlComponents) # Added for Tabs
-source("controller.R")
 
+
+## Tab 1
 # energy consumption plot
 energy_point <- div(
   dccGraph(
@@ -70,8 +72,35 @@ tab2_content <- dbcRow(
 
 
 ## Tab 3
+# temp and hum for a date range
+energy_temp_area <- div(
+  dccGraph(id='energy-temp-area'),
+  style = list(
+    border = 'thin lightgrey solid',
+    width = "95%",
+    #display = 'inline-grid',
+    backgroundColor = 'rgb(250, 250, 250)',
+    padding = '10px 10px 10px 10px'
+  )
+)
 
+# area plot for a date range
+energy_hum_area <- div(
+  dccGraph(id = 'energy-hum-area'),
+  style = list(
+    border = 'thin lightgrey solid',
+    width = "95%",
+    backgroundColor = 'rgb(250, 250, 250)',
+    padding = '10px 10px 10px 10px'
+  )
+)
 
+tab3_content <- dbcRow(
+  list(
+    dbcCol(energy_temp_area),
+    dbcCol(energy_hum_area)
+  )
+)
 
 
 ## Tab 4 About
@@ -138,10 +167,8 @@ tabs <- htmlDiv(list(
       dccTab(
         label='Tab three',
         value='tab-3', className='custom-tab',
-        selected_className='custom-tab--selected'
-        # Energy vs temp & hum plots go here
-        # ,
-        # children = 
+        selected_className='custom-tab--selected',
+        children = tab3_content # Energy vs temp & hum plots go here
       ),
       dccTab(
         label='About',
@@ -177,17 +204,17 @@ tab_block <- dbcContainer(
 
 
 
-# area plot for a date range
-area_plot <- div(
-    dccGraph(id = 'area-plot'),
-    style = list(
-        border = 'thin lightgrey solid',
-        width = 400,
-        #display = 'inline-grid',
-        backgroundColor = 'rgb(250, 250, 250)',
-        padding = '10px 10px 10px 10px'
-    )
-)
+# # area plot for a date range
+# area_plot <- div(
+#     dccGraph(id = 'area-plot'),
+#     style = list(
+#         border = 'thin lightgrey solid',
+#         width = 400,
+#         #display = 'inline-grid',
+#         backgroundColor = 'rgb(250, 250, 250)',
+#         padding = '10px 10px 10px 10px'
+#     )
+# )
 
 
 
@@ -239,25 +266,25 @@ setting_block <- dbcContainer(
 
 
 
-# plots block2
-plots_block2 <- dbcContainer(
-    # first row
-    dbcRow(
-        list(
-            dbcCol(temp_hum_plot),
-            dbcCol(weekday_plot),
-            dbcCol(area_plot)
-        )
-    ),
-    fluid = TRUE,
-    style = list(
-        position = "relative",
-        top = 150,
-        left = 180,
-        width = "80%",
-        height = "40%",
-        border = 'thin lightgrey solid',
-        backgroundColor = 'rgb(250, 250, 250)',
-        padding = '10px 10px 10px 10px'
-    )
-)
+# # plots block2
+# plots_block2 <- dbcContainer(
+#     # first row
+#     dbcRow(
+#         list(
+#             dbcCol(temp_hum_plot),
+#             dbcCol(weekday_plot),
+#             dbcCol(area_plot)
+#         )
+#     ),
+#     fluid = TRUE,
+#     style = list(
+#         position = "relative",
+#         top = 150,
+#         left = 180,
+#         width = "80%",
+#         height = "40%",
+#         border = 'thin lightgrey solid',
+#         backgroundColor = 'rgb(250, 250, 250)',
+#         padding = '10px 10px 10px 10px'
+#     )
+# )

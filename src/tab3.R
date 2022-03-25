@@ -2,7 +2,7 @@ library(ggplot2)
 library(dplyr)
 library(plotly)
 library(hrbrthemes)
-source("wrangling.R")
+
 
 # function for energy consumption and room wise temperation variation
 energy_temp_function <- function(room_name, start_date, end_date) {
@@ -15,38 +15,39 @@ energy_temp_function <- function(room_name, start_date, end_date) {
   #' @examples
   #' energy_temp_function("Kitchen","2016-01-11","2016-03-29")
   
-  
+  plot_title <- paste("Energy v/s", room_name ,"Temperature", sep = ' ')
   energy_data$room_temp <- energy_data[[paste(room_name, "_temp", sep="")]]
-
   
   energy_temp_subset <- energy_data %>%
-    subset(energy_data$date_only >= start_date & energy_data$date_only <= end_date,select=c(room_temp,Lights,Appliances)) %>%
+    subset(energy_data$date_only >= start_date & energy_data$date_only <= end_date,
+           select = c(room_temp, Appliances, Lights)) %>%
     group_by(room_temp) %>%
     summarise(sum_energy = sum(Lights + Appliances))
 
-
-energy_temp_plot <- ggplot(energy_temp_subset, aes(room_temp, sum_energy)) +
-  stat_smooth(
-    geom = "area",
-    method = "loess",
-    span = 1 / 4,
-    alpha = 1 / 2,
-    fill = "#69b3a2",
-    se = FALSE
-  )+
-  labs(title="Energy v/s Room Temperature",
-       x =paste(room_name, "Temperature(in Celsius)", sep=" "), y = "Energy Consumed(in Wh)")+theme_ipsum()+
-  theme(
-    axis.line = element_line(colour = "black"),
-    panel.grid.major = element_blank(),
-    panel.grid.minor = element_blank(),
-    panel.border = element_blank(),
-    panel.background = element_blank()
-        
-        ) 
-
-
- ggplotly(energy_temp_plot)
+  energy_temp_plot <- ggplot(energy_temp_subset, aes(room_temp, sum_energy)) +
+    stat_smooth(
+      geom = "area",
+      method = "loess",
+      span = 1 / 4,
+      alpha = 1 / 2,
+      fill = "#69b3a2",
+      se = FALSE
+    ) +
+    labs(title=plot_title,
+         x =paste(room_name, "Temperature(in Celsius)", sep=" "), 
+         y = "Energy Consumed(in Wh)")+
+    theme_ipsum()+
+    theme(
+      axis.line = element_line(colour = "black"),
+      panel.grid.major = element_blank(),
+      panel.grid.minor = element_blank(),
+      panel.border = element_blank(),
+      panel.background = element_blank()
+          
+          ) 
+  
+  
+   ggplotly(energy_temp_plot)
 
 }
 
@@ -66,7 +67,7 @@ energy_humidity_function <- function(room_name, start_date, end_date) {
   #' @examples
   #' energy_humidity_function("Kitchen","2016-01-11","2016-03-29")
   
-  
+  plot_title <- paste("Energy v/s", room_name ,"Humidity", sep = ' ')
   energy_data$room_humid <- energy_data[[paste(room_name, "_hum", sep="")]]
   
   
@@ -85,7 +86,7 @@ energy_humidity_function <- function(room_name, start_date, end_date) {
       fill = "#69b3a2",
       se = FALSE
     )+
-    labs(title="Humidity Level v/s Room Temperature",
+    labs(title=plot_title,
          x =paste(room_name, "Humidity(in %)", sep=" "), y = "Energy Consumed(in Wh)")+theme_ipsum()+
     theme(
       axis.line = element_line(colour = "black"),
