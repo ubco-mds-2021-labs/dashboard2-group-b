@@ -36,17 +36,11 @@ The data set was donated in the year 2017 by Luis Candanedo, University of Mons 
 
 ## How to get started with this dashboard
 
-This dashboard offers dynamic room and date range selection. You can select a room from the floorplan image by clicking over any blue circle. 
-You have flexibility to select the date range for the span till the possible range selection. This selection would help to see the variations in the plot across all the tabs. 
-The tab1 focuses on the
+The tabs focuses on depicting the level of energy consumption and the humidity, temperature variation as per the selections. The dashboard offers dynamic room and date range selection. 
+If you are interested in knowing about the level of room temperature and humidity, floorplan selection would be yout tool. You can make a selection of a room from the floorplan image by clicking over any blue circle. 
+You have flexibility to select the date range for the span till the possible range selection(due to data restrictions). This selection would help to see the variations in the plot across all the tabs. This would serve the purpose for you to identify the energy required during a particular season, any particular holiday month. 
+Since the date had every 10minutes recording you could dig deep into a week`s energy consumption analysis. In addition to this, compare the weekdays energy consumption report and maintain a balance of the photovoltaic.
 
-For the total energy consumption of all appliance, you can view the bar chart within the dashboard. This displays Watts per hour for the house according to your date range selection. Adjancent to the bar chart is a pie chart, which demonstrates a proportional comparision of the filtered selection.
-
-For a month-wise comparison of energy consumption by appliance and light, you can view the area chart labeled "Energy Used in House".
-
-If you are interested in knowing about room temperature and humidity, there is a drop-down menu selection that allows you to do this. This selection updates the line chart labeled "Temperature and Humidity Trend".
-
-If you are interested in knowing the temperature and humidity outside the house, you can view the area chart labled " Outside Temperature vs Humidity", which displays the humdity in percentage and the temperature in Celsius.
 
 ## Acknowledgements and references 
 
