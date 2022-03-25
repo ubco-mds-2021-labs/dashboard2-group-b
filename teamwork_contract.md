@@ -106,13 +106,13 @@ Here are the tables you are expected to complete (the first one is pre-filled in
 
 ### Milestone 1
 
-| Category           | Team member 1 | Team member 2 | Team member 3 | Team member 4 |
-|--------------------|---------------|---------------|---------------|---------------|
-| Repository Setup   | 60%           | 40%           | -             | -             |
-| Sketch             | 20%           | 25%           | 25%           | 30%           |
-| Documentation      | 10%           | 10%           | 40%           | 40%           |
-| Project Management | 50%           | 50%           | 0%            | 0%            |
-| Troubleshooting    | -             | -             | -             | -             |
+| Category                  | Nyanda   |     Chad      | Nelson        | Harpreet |
+|---------------------------|----------|---------------|---------------|---------------|
+| Documentation/Reflection  |   30%    |    10%        |    10%        |   30%         |
+| Writing new code          |   20%    |    30%        |     30%       |   20%         |
+| Code Reviews/editing      |   20%    |    30%        |     30%       |   20%         |
+| Project Management        |   25%    |    25%        |     25%       |   25%         |
+| Testing & Troubleshooting |   25%    |    25%        |     25%       |   25%         |
 
 Brief notes/explanations (optional):
 - No troubleshooting was needed for Milestone 1
