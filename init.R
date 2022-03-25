@@ -20,5 +20,6 @@ install.packages('plotly')
 install.packages('patchwork')
 install.packages('dash')
 install.packages('dashHtmlComponents')
+install.packages('hrbrthemes')
 
 remotes::install_github('plotly/dashR', upgrade=TRUE)
