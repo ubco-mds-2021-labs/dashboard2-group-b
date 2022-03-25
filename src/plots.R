@@ -1,15 +1,12 @@
 library(dash)
-library(dashHtmlComponents) # Tabs need this lib
+library(dashHtmlComponents) # Added for Tabs
 source("controller.R")
 
 # energy consumption plot
 energy_point <- div(
   dccGraph(
     id = 'energy-scatter',
-    hoverData = list(points = list(list(customdata = "2016-1-11"))),
-    style = list(
-      height = "95%"
-    )
+    hoverData = list(points = list(list(customdata = "2016-1-11")))
   ),
   style = list(
     border = 'thin lightgrey solid',
@@ -25,7 +22,7 @@ single_day_plot <- div(
   dccGraph(id='out-hum'),
   style = list(
     border = 'thin lightgrey solid',
-    width = "70%",
+    width = "75",
     backgroundColor = 'rgb(250, 250, 250)',
     padding = '10px 10px 10px 10px'
   )
@@ -123,6 +120,7 @@ tabs <- htmlDiv(list(
     className='custom-tabs-container',
     children=list(
       dccTab(
+        id = 'tab1',
         label='Tab one',
         value='tab-1',
         className='custom-tab',
@@ -161,12 +159,13 @@ tab_block <- dbcContainer(
   list(
     tabs
   ),
-  #fluid = TRUE,
+  fluid = TRUE,
   style = list(
     position = "relative",
-    top = 110,
-    left = 200,
-    width = "80%",
+    top = 96,
+    left = 195,
+    #left = 242,
+    width = "70%",
     height = "80%",
     border = 'thin lightgrey solid',
     backgroundColor = 'rgb(250, 250, 250)',
@@ -195,7 +194,7 @@ area_plot <- div(
 
 
 # header
-markdown_text <-"# Energy Use of Appliance in a Low-Energy House"
+markdown_text <-"# Energy Consumption in a Low-Energy House"
 
 # Header 
 
@@ -206,7 +205,7 @@ header <- div(
         top = 0,
         left = 0,
         width = "100%",
-        height = "8%",
+        height = 100,
         backgroundColor = 'rgb(79, 134, 224)'
     )
 )
@@ -227,7 +226,7 @@ setting_block <- dbcContainer(
     fluid = TRUE, 
     style = list(
         position = "fixed",
-        top = 110,
+        top = 100,
         left = 0,
         width = 350,
         # height = "80%",
