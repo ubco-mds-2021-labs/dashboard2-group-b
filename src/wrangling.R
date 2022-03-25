@@ -1,6 +1,6 @@
 library(tidyverse)
 
-energy_data<-read.csv('./data/energydata_complete.csv')
+energy_data<-read.csv('../data/energydata_complete.csv')
 
 drops <- c("rv1","rv2")
 energy_data<-energy_data[ , !(names(energy_data) %in% drops)]

@@ -6,7 +6,8 @@ source('wrangling.R')
 
 app <- Dash$new(external_stylesheets = dbcThemes$GRID)
 
-
+app.layout = html.Div(html.H1('Heading', style={'backgroundColor':'blancedalmond'}))
+                      
 # set layout
 app %>% set_layout(
   header,
