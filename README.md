@@ -13,7 +13,7 @@
 
 ## What are we doing and Why
 
-We built a dashboard to visualize data related to a low energy-house in Belgium. Our purpose is to provide analytical insights, visually, for ease of use in cases such as the determination of the adequate photovoltaic and energy storage size. Ideally, this could be of utmost importance to Belgium's energy management system. This is particularly true in the context of diminishing the inflow of power to the grid across the four seasons. This is premised on avoiding power balckouts. On the ground, this could be of immediate use to electricity grid operators in their calculations as they strategize how to avoid power blackouts.
+We built a dashboard to visualize data related to a low energy-house in Belgium. Our purpose is to provide analytical insights, visually, for ease of use in cases such as the determination of the adequate photovoltaic and energy storage size. The target audience is the Belgium's energy management system. This is particularly true in the context of diminishing the inflow of power to the grid across the four seasons. This is premised on avoiding power balckouts. On the ground, this could be of immediate use to electricity grid operators in their calculations as they strategize how to avoid power blackouts.
 
 What is unique about our proposal is the use of a low-energy household to generate the data. This usage could be valuable in deciding upon a minimum threshold for energy consumption per household. This can be of further use in managing load control within unforseen emergency situations as well as in the creation of backup systems.
 
@@ -36,7 +36,9 @@ The data set was donated in the year 2017 by Luis Candanedo, University of Mons 
 
 ## How to get started with this dashboard
 
-This dashboard offers dynamic date range selection, allowing you to input dates according to your interest. Date range selections can go from a single day to span an entire month or even several months. Each date range selection simultaneously updates all plots; there are five plots in total.
+This dashboard offers dynamic room and date range selection. You can select a room from the floorplan image by clicking over any blue circle. 
+You have flexibility to select the date range for the span till the possible range selection. This selection would help to see the variations in the plot across all the tabs. 
+The tab1 focuses on the
 
 For the total energy consumption of all appliance, you can view the bar chart within the dashboard. This displays Watts per hour for the house according to your date range selection. Adjancent to the bar chart is a pie chart, which demonstrates a proportional comparision of the filtered selection.
 
