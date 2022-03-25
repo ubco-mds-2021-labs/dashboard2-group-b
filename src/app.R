@@ -1,8 +1,8 @@
-library(dash)
-library(hrbrthemes)
-source('src/plots.R')
-source('src/functions.R')
-
+source('plots.R')
+source('controller.R')
+source('functions.R')
+source('energy_consumption_plot.R')
+source('wrangling.R')
 
 app <- Dash$new(external_stylesheets = dbcThemes$GRID)
 
@@ -12,8 +12,7 @@ app %>% set_layout(
   header,
   dccStore(id = 'room', storage_type = 'memory', data = "Kitchen"),
   setting_block,
-  plots_block1,
-  plots_block2
+  tab_block
 )
 
 
@@ -67,7 +66,7 @@ app %>% add_callback(
     energy_consumption(start_date, end_date)
   }
 )
-  
+
 app %>% add_callback(
   output('out-hum', 'figure'),
   list(
@@ -89,5 +88,14 @@ app %>% add_callback(
     selected_date_temp_plot(hoverData,data)
   }
 )
+
+
+
+
+
+
+
+
+
 
 app$run_server()

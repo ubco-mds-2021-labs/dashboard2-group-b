@@ -1,47 +1,182 @@
 library(dash)
-source('src/controller.R')
-source('src/wrangling.R')
-
+library(dashHtmlComponents) # Tabs need this lib
+source("controller.R")
 
 # energy consumption plot
 energy_point <- div(
-    dccGraph(
-        id = 'energy-scatter',
-        hoverData = list(points = list(list(customdata = "2016-1-11")))
-    ),
+  dccGraph(
+    id = 'energy-scatter',
+    hoverData = list(points = list(list(customdata = "2016-1-11"))),
     style = list(
-        border = 'thin lightgrey solid',
-        width = "95%",
-        backgroundColor = 'rgb(250, 250, 250)',
-        #display = 'inline-grid',
-        padding = '10px 10px 10px 10px'
+      height = "95%"
     )
+  ),
+  style = list(
+    border = 'thin lightgrey solid',
+    width = "95%",
+    backgroundColor = 'rgb(250, 250, 250)',
+    padding = '10px 10px 10px 10px'
+  )
 )
 
 # temp and hum for a single day
 single_day_plot <- div(
-    dccGraph(id='out-temp'),
-    dccGraph(id='out-hum'),
-    style = list(
-        border = 'thin lightgrey solid',
-        width = "70%",
-        #display = 'inline-grid',
-        backgroundColor = 'rgb(250, 250, 250)',
-        padding = '10px 10px 10px 10px'
-    )
+  dccGraph(id='out-temp'),
+  dccGraph(id='out-hum'),
+  style = list(
+    border = 'thin lightgrey solid',
+    width = "70%",
+    backgroundColor = 'rgb(250, 250, 250)',
+    padding = '10px 10px 10px 10px'
+  )
 )
 
+tab1_content <- dbcRow(
+  list(
+    dbcCol(energy_point),
+    dbcCol(single_day_plot)
+  )
+)
+
+
+
+## Tab 2
 # temp and hum for a date range
 temp_hum_plot <- div(
-    dccGraph(id='tempHum'),
-    style = list(
-        border = 'thin lightgrey solid',
-        width = 400,
-        #display = 'inline-grid',
-        backgroundColor = 'rgb(250, 250, 250)',
-        padding = '10px 10px 10px 10px'
-    )
+  dccGraph(id='tempHum'),
+  style = list(
+    border = 'thin lightgrey solid',
+    width = "95%",
+    #display = 'inline-grid',
+    backgroundColor = 'rgb(250, 250, 250)',
+    padding = '10px 10px 10px 10px'
+  )
 )
+
+# area plot for a date range
+weekday_plot <- div(
+  dccGraph(id = 'weekday-bar'),
+  style = list(
+    border = 'thin lightgrey solid',
+    width = "95%",
+    backgroundColor = 'rgb(250, 250, 250)',
+    padding = '10px 10px 10px 10px'
+  )
+)
+
+tab2_content <- dbcRow(
+  list(
+    dbcCol(temp_hum_plot),
+    dbcCol(weekday_plot)
+  )
+)
+
+
+## Tab 3
+
+
+
+
+## Tab 4 About
+collaborators <-"
+  
+  Harpreet Kaur
+  
+  Chad Wheeler
+  
+  Nelson Tang
+  
+  Nyanda Redwood
+
+"
+data_reference <- "[Appliances energy prediction Data Set](http://archive.ics.uci.edu/ml/datasets/Appliances+energy+prediction)"
+
+github <- "[GitHub Link](https://github.com/ubco-mds-2021-labs/dashboard2-group-b)"
+
+tab4_content <- dbcCol(
+  list(
+    div(
+      html$h2("Collaborators: "),
+      dccMarkdown(collaborators)
+    ),
+    div(
+      html$h2("Data Source: "),
+      dccMarkdown(data_reference)
+    ),
+    div(
+      html$h2("Code Source: "),
+      dccMarkdown(github)
+    )
+  )
+)
+
+
+
+
+
+
+tabs <- htmlDiv(list(
+  dccTabs(
+    id="tabs-with-classes",
+    value='tab-1',
+    parent_className='custom-tabs',
+    className='custom-tabs-container',
+    children=list(
+      dccTab(
+        label='Tab one',
+        value='tab-1',
+        className='custom-tab',
+        selected_className='custom-tab--selected',
+        children = tab1_content
+      ),
+      dccTab(
+        label='Tab two',
+        value='tab-2',
+        className='custom-tab',
+        selected_className='custom-tab--selected',
+        # week days and temp hum plots go here
+        children = tab2_content
+      ),
+      dccTab(
+        label='Tab three',
+        value='tab-3', className='custom-tab',
+        selected_className='custom-tab--selected'
+        # Energy vs temp & hum plots go here
+        # ,
+        # children = 
+      ),
+      dccTab(
+        label='About',
+        value='tab-4',
+        className='custom-tab',
+        selected_className='custom-tab--selected',
+        children = tab4_content
+      )
+    )),
+  htmlDiv(id='tabs-content-classes')
+))
+
+
+tab_block <- dbcContainer(
+  list(
+    tabs
+  ),
+  #fluid = TRUE,
+  style = list(
+    position = "relative",
+    top = 110,
+    left = 200,
+    width = "80%",
+    height = "80%",
+    border = 'thin lightgrey solid',
+    backgroundColor = 'rgb(250, 250, 250)',
+    padding = '10px 10px 10px 10px'
+  )
+)
+
+
+
+
 
 # area plot for a date range
 area_plot <- div(
@@ -57,16 +192,7 @@ area_plot <- div(
 
 
 
-# area plot for a date range
-weekday_plot <- div(
-    dccGraph(id = 'weekday-bar'),
-    style = list(
-        border = 'thin lightgrey solid',
-        width = 400,
-        backgroundColor = 'rgb(250, 250, 250)',
-        padding = '10px 10px 10px 10px'
-    )
-)
+
 
 # header
 markdown_text <-"# Energy Use of Appliance in a Low-Energy House"
@@ -85,20 +211,6 @@ header <- div(
     )
 )
 
-collaborators <-"
-  
-  Harpreet Kaur
-  
-  Chad Wheeler
-  
-  Nelson Tang
-  
-  Nyanda Redwood
-
-"
-data_reference <- "[Appliances energy prediction Data Set](http://archive.ics.uci.edu/ml/datasets/Appliances+energy+prediction)"
-
-github <- "[GitHub Link](https://github.com/ubco-mds-2021-labs/dashboard2-group-b)"
 
 # sidebar for controller
 setting_block <- dbcContainer(
@@ -110,18 +222,6 @@ setting_block <- dbcContainer(
         div(
             html$h2("Click a circle to select a room: "),
             floorplan_selector
-        ),
-        div(
-            html$h2("Collaborators: "),
-            dccMarkdown(collaborators)
-        ),
-        div(
-            html$h2("Data Source: "),
-            dccMarkdown(data_reference)
-        ),
-        div(
-            html$h2("Code Source: "),
-            dccMarkdown(github)
         )
     ), 
     fluid = TRUE, 
@@ -138,27 +238,6 @@ setting_block <- dbcContainer(
     )
 )
 
-# plots block1
-plots_block1 <- dbcContainer(
-    # first row
-    dbcRow(
-        list(
-            dbcCol(energy_point),
-            dbcCol(single_day_plot)
-        )
-    ),
-    fluid = TRUE,
-    style = list(
-        position = "relative",
-        top = 110,
-        left = 230,
-        width = "80%",
-        height = "40%",
-        border = 'thin lightgrey solid',
-        backgroundColor = 'rgb(250, 250, 250)',
-        padding = '10px 10px 10px 10px'
-    )
-)
 
 
 # plots block2
