@@ -2,7 +2,7 @@
 
 ### Deployed App Link
 
-[r-prototype](https://r-prototype.herokuapp.com/)
+[house-energy-data](https://house-energy-data.herokuapp.com/)
 
 ## Who are we
 
