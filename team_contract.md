@@ -45,7 +45,7 @@ To accomplish this goal, below are five concrete ideas that we all agree to rega
 ## Conduct
 
 The code of conduct we have chosen is in the [Code of Conduct](./CODE_OF_CONDUCT.md) document.
-All team members agree to follow the code of conduct, and below are five concrete escalation steps that we all agree to follow in the event that the code of conduct is violated by any member of the group (Step 1 is the first thing you will do, and Step 5 is the last thing you will do).
+All team members agree to following the code of conduct, and below are five concrete escalation steps that we all agree to follow in the event that the code of conduct is violated by any member of the group (Step 1 is the first thing you will do, and Step 5 is the last thing you will do).
 
 1. Talk to the person
 2. Consult the group
@@ -58,8 +58,8 @@ All team members agree to follow the code of conduct, and below are five concret
 
 ## Conflict Management
 
-Despite our best intentions, conflict may invariably arise amongst teammates.
-Discuss within your team some conflict mitigation strategies (feel free to search online if needed) and come up with 5 strategies all members of the team agree to follow in the event there is a conflict within the group.
+Despite our best intentions, conflict may invariably arise within teammates.
+Discuss amongst your team some conflict mitigation strategies (feel free to search online if needed) and come up with 5 strategies all members of the team agree to follow in the event there is a conflict within the group.
 You may also include things you will NOT do in the event a conflict arises.
 
 1. Be open to all perspectives
@@ -94,61 +94,3 @@ You can explore and choose any you like, but if you cannot decide, I suggest usi
 All team members agree to the [Name of chosen Git Workflow] workflow, and the following conventions (e.g., master branch protection, at least X reviews before a pull request, at least N days before the deadline etc...):
 
 1. Feature-branch-workflow
-
-## Final Reflection on Workload Distribution
-
-** This section should be completed AFTER Milestone 4 is done and submitted! Only one is needed PER group. **
-
-In this section we will ask you to self-report the workload distribution to various categories of tasks.
-For each of the categories, we want you to report the approximate workload distribution, split by the milestone.
-
-Here are the tables you are expected to complete (the first one is pre-filled in so you can see what we're expecting):
-
-### Milestone 1
-
-| Category           | Team member 1 | Team member 2 | Team member 3 | Team member 4 |
-|--------------------|---------------|---------------|---------------|---------------|
-| Repository Setup   | 60%           | 40%           | -             | -             |
-| Sketch             | 20%           | 25%           | 25%           | 30%           |
-| Documentation      | 10%           | 10%           | 40%           | 40%           |
-| Project Management | 50%           | 50%           | 0%            | 0%            |
-| Troubleshooting    | -             | -             | -             | -             |
-
-Brief notes/explanations (optional):
-- No troubleshooting was needed for Milestone 1
-- Member 1 and Member did most of the repository setup, whereas 3 and 4 did most of the documentation
-
-### Milestone 2
-
-| Category                  | Nyanda   |     Chad      | Nelson        | Harpreet |
-|---------------------------|----------|---------------|---------------|---------------|
-| Documentation/Reflection  |   50%    |               |               |   50%         |
-| Writing new code          |   20%    |    30%        |     30%       |   20%         |
-| Code Reviews/editing      |   20%    |    30%        |     30%       |   20%         |
-| Project Management        |   25%    |    25%        |     25%       |   25%         |
-| Testing & Troubleshooting |          |               |               |               |
-
-Brief notes/explanations (optional):
-
-### Milestone 3
-
-| Category                  | Nyanda   |      Chad     |  Nelson    |   Harpreet |
-|---------------------------|----------|---------------|------------|------------|
-| Documentation/Reflection  |  50%     |               |            |  50%       |
-| Writing new code          |  20%     |   30%         |   30%      |  20%       |
-| Code Reviews/editing      |  20%     |   30%         |   30%      |  20%       |
-| Project Management        |  25%     |   25%         |   25%      |  25%       |
-| Testing & Troubleshooting |  22.5%   |   27.5%       |   27.5%    |  22.5%     |
-
-Brief notes/explanations (optional):
-
-### Milestone 4
-### Milestone 3
-
-| Category                  | Nyanda   |      Chad     |  Nelson    |   Harpreet |
-|---------------------------|----------|---------------|------------|------------|
-| Documentation/Reflection  |  50%     |               |            |  50%       |
-| Writing new code          |  20%     |   30%         |   30%      |  20%       |
-| Code Reviews/editing      |  20%     |   30%         |   30%      |  20%       |
-| Project Management        |  25%     |   25%         |   25%      |  25%       |
-| Testing & Troubleshooting |  20%     |   30%         |   30%      |  20%       |
