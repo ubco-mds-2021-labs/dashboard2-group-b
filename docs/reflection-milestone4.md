@@ -1,11 +1,9 @@
 #Work Achieved
 
-Our team implemented everything as planned. Our primary objective is to provide analytical insights, visually, for ease of use in cases such as the determination of the adequate photovoltaic and energy storage size.
+As a team we made changes to our orignial plans as needed and according to insightful feedback. For example, we changed our the design of our layout from what we presented initially in order to obtain cleaner styles. Our design now include 3 tabs, less interactive graphs, and an interactive floor plan.
 
-After implementations using Python and R, we decided to remain with R. This resulted in various modifications that are geared towards optimization and clean design. For example, we changed our the design of our layout from what we presented initially.
-
-Since the dashboard is implemented in R, certain elements of the presente layout which have been modified in comparison to the initial layout to add more grace to the dashboard. We have successfully implemented on reducing the viewer`s pain to search and select from the dropdown by hovers over the particular floor and conveniently select the room to view the details. 
-All the plots are interactive and functional as per the dropdowns and selection menu insertions in the dashboard. The principle of visualizations have been kept in mind. We believe that the layout has been perfectly performed and is functional as per our decision making. 
+Initially, we coded  in two languages, Python and R, and deployed our app for each. For our final version, we decided to remain with R for its inherent optimization advantage with graphical visualizations. 
+ 
 
 #Work not yet achieved
 
