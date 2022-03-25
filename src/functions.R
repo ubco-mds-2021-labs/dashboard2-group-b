@@ -13,10 +13,11 @@ room_selector <- function(input1, input2, input3, input4, input5, input6, input7
   
   ctx <- callback_context()
   
-  most_recent_click <- if(ctx$triggered$value) {
-    
+
+  most_recent_click <- if(!is.null(ctx$triggered$value)) {
+
     unlist(strsplit(ctx$triggered$prop_id, "[.]"))[1]
-    
+
   } else "Kitchen"
   
   most_recent_click
@@ -36,7 +37,6 @@ weekday <- function(start_date, end_date) {
            select = c(weekday, Appliances)) %>%
     group_by(weekday) %>%
     summarise(sum_appliances = sum(Appliances))
-  
   # make Day_of_week an ordered factor
   weekday <- factor(weekday, levels=c("Saturday", "Friday", "Thursday", "Wednesday", "Tuesday", "Monday", "Sunday" 
   ))

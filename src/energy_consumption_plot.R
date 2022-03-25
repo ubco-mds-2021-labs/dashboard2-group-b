@@ -30,9 +30,9 @@ energy_consumption <- function(start_date, end_date) {
   # sum energy use in each date
   group_by_date <- energy_data %>%
     subset(energy_data$date_only >= start_date & energy_data$date_only <= end_date,
-           select = c(date_only, Appliances)) %>%
+           select = c(date_only, Appliances, Lights)) %>%
     group_by(date_only) %>%
-    summarise(Appliances_Energy_Used = sum(Appliances)) %>%
+    summarise(total_energy_used = sum(Appliances+Lights)) %>%
     mutate(Month = months(date_only)) %>%
     mutate(Date = date_only)
   
@@ -61,26 +61,67 @@ energy_consumption <- function(start_date, end_date) {
       xlims <- c("2016-05-01", "2016-05-31")
     }
     
+    subset_data <- subset(group_by_date, Month == month)
     
-    #spline_int <- as.data.frame(spline(month_data$Date, month_data$Appliances_Energy_Used))
-    p <- ggplot(subset(group_by_date, Month == month), aes(x=Date, y=Appliances_Energy_Used)) +
-      geom_line(color="#69b3a2", size=1) +
-      #geom_smooth(method = "loess")+
-      geom_area( fill="#69b3a2", alpha=0.4) +
-      geom_point(size=1.5, color="#69b3a2") +
-      theme_ipsum() +
-      scale_x_date(limits = as.Date(xlims)) +
-      scale_y_continuous(limits = c(0,27150 ))
+    mean_energy = mean(subset_data$total_energy_used)
+    # if dataset is small, fewer data values than degrees of freedom, we can not use stat_smooth()
+    if (nrow(subset_data) <= 9) {
+      p <- ggplot(subset_data, 
+                  aes(x=Date, y=total_energy_used)) +
+        #geom_line(color="#69b3a2", size=1) +
+        geom_point(size=1.5, color="#69b3a2") +
+        geom_area( fill="#69b3a2", alpha=0.4) +
+        geom_hline(yintercept = mean_energy, 
+                   alpha=0.4, 
+                   size = 0.6, 
+                   linetype = "dashed") +
+        theme_ipsum() +
+        scale_x_date(limits = as.Date(xlims)) +
+        scale_y_continuous(limits = c(0,27150), breaks = c(10000, mean_energy,20000))
+    }else{
+      p <- ggplot(subset_data, 
+                  aes(x=Date, y=total_energy_used)) +
+        #geom_line(color="#69b3a2", size=1) +
+        geom_point(size=1.5, color="#69b3a2") +
+        stat_smooth(geom = 'area', 
+                    method = 'loess', 
+                    span = 1/4, 
+                    alpha = 1/2, 
+                    fill = "#69b3a2", 
+                    se = FALSE) +
+        geom_hline(yintercept = mean_energy, 
+                   alpha=0.3, 
+                   size = 0.3, 
+                   linetype = "dashed") +
+        theme_ipsum() +
+        scale_x_date(limits = as.Date(xlims)) +
+        scale_y_continuous(limits = c(0,27150), breaks = c(10000, mean_energy,20000))
+      
+    }
     
     # add plot in list
-    plot_list[[counter]] <- ggplotly(p, height = 900)
-    # plot_list[[counter]] <- plot_list[[counter]]$x$data[[1]]$hoverinfo <- "none"
+    plot_list[[counter]] <- ggplotly(p, height = 650)
     counter = counter + 1
   }
   
   # layout for ggplot
-  subplot(plot_list,nrows = length(plot_list), titleY = FALSE) %>%
-    layout(title = list(text = "<b> Energy Consumption of Appliances (Wh) </b>"))
+  w <- subplot(plot_list,nrows = length(plot_list), titleY = FALSE) %>%
+    layout(title = list(text = "<b>Total Energy Consumption (Wh)</b>"))
+  
+  # add hover text to each month in subplot
+  for(i in c(1,4,7,10,13)[1:length(plot_list)]){
+    #points text
+    text_1 <-  paste0("Actual Data Point", "<br />", "Date: ",
+                      as.Date(round(as.numeric(w$x$data[[i]]$x)), origin = "1970-01-01"), "<br />", "Total Energy Used: ", w$x$data[[1]]$y)
+    #smooth line text
+    text_2 <-  paste0("Smooth Data Curve", "<br />" ,  "Date: ",
+                      as.Date(round(as.numeric(w$x$data[[i+1]]$x)), origin = "1970-01-01"), "<br />", "Smoothed Energy Used: ", round(w$x$data[[2]]$y))
+    w <- w %>%
+      style(text= text_1, traces = i) %>%
+      style(text = text_2, traces = i+1)
+  }
+  
+  return(w)
 }
 
 # room temp for a selected date
@@ -103,7 +144,7 @@ selected_date_temp_plot <- function(hoverData,value) {
   if (is.null(hoverData$points[[1]]$text)) {
     date <- hoverData$points[[1]]$customdata
   }else{
-    date <- substr(hoverData$points[[1]]$text, 7, 16)
+    date <- substr(hoverData$points[[1]]$text, 30, 39)
   }
   
   # select date in data
@@ -119,7 +160,7 @@ selected_date_temp_plot <- function(hoverData,value) {
     ggtitle(title)+
     ylab("Humidity in %")
   
-  ggplotly(p)
+  ggplotly(p,height = 350)
 }
 
 # room hum for a single day
@@ -137,10 +178,12 @@ selected_date_hum_plot <- function(hoverData,value) {
   
   # get date from hoverdata
   # if not selected then set as customdata
+  
   if (is.null(hoverData$points[[1]]$text)) {
     date <- hoverData$points[[1]]$customdata
   }else{
-    date <- substr(hoverData$points[[1]]$text, 7, 16)
+    #date <- substr(hoverData$points[[1]]$text, 7, 16)
+    date <- substr(hoverData$points[[1]]$text, 30, 39)
   }
   
   # select date in data
@@ -156,6 +199,5 @@ selected_date_hum_plot <- function(hoverData,value) {
     ggtitle(title) +
     ylab("Temperature in Celsius")
   
-  ggplotly(p)
+  ggplotly(p,height = 350)
 }
-
