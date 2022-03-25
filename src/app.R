@@ -1,9 +1,9 @@
-source('wrangling.R')
+source('src/wrangling.R')
 
-source('plots.R')
-source('tab3.R')
-source('energy_consumption_plot.R')
-source('functions.R')
+source('src/plots.R')
+source('src/tab3.R')
+source('src/energy_consumption_plot.R')
+source('src/functions.R')
 # don't change the source order
 
 

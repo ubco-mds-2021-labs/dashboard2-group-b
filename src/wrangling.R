@@ -1,4 +1,5 @@
 library(tidyverse)
+library(lubridate)
 
 energy_data<-read.csv('./data/energydata_complete.csv')
 
@@ -34,6 +35,9 @@ colnames(energy_data) <- c("Date",
                            "Windspeed",
                            "Visibility",
                            "Dewpoint")
+
+energy_data['energy'] <- energy_data$Appliances + energy_data$Lights
+
 #Change to date type
 energy_data$Date <- ymd_hms(energy_data$Date)
 

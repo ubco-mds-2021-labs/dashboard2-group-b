@@ -1,4 +1,4 @@
-source('wrangling.R')
+source('src/wrangling.R')
 
 # Function to select room
 room_selector <- function(input1, input2, input3, input4, input5, input6, input7, input8, input9) {
@@ -35,12 +35,12 @@ weekday <- function(start_date, end_date) {
     #' @examples
     #' weekday("2016-1-11", "2016-5-11")
   # make Day_of_week an ordered factor
-  weekday <- factor(energy_data$weekday, levels=c("Saturday", "Friday", "Thursday", "Wednesday", "Tuesday", "Monday", "Sunday" 
+  energy_data$weekday <- factor(energy_data$weekday, levels=c("Saturday", "Friday", "Thursday", "Wednesday", "Tuesday", "Monday", "Sunday" 
   ))
   
-  bar_plot <- ggplot(energy_data, aes(x=Appliances, y=weekday)) + 
+  bar_plot <- ggplot(energy_data, aes(x=energy, y=weekday)) + 
     labs(title = 'Least Consumption on Tuesdays',
-         x='Energy Consumption of Appliances (Wh)') + 
+         x='Energy Consumption of Appliances and Lights (Wh)') + 
     geom_col(show.legend = FALSE) +
     theme_bw() + theme(axis.title.y=element_blank())
   ggplotly(bar_plot)
